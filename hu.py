@@ -5,7 +5,7 @@ import time
 def printHello(): 
     global isthere 
     nowhour =str(time.strftime("%H", time.localtime()))
-    if nowhour in ['08','09','10','17','18','19','20','21']:
+    if ( isthere and  nowhour in ['17','18','19','20','21']) or ( not isthere and  nowhour in ['08','09','10','11']):
         print(time.localtime())
         url = "https://bmeparkapi.capitaland.com.cn/api/park/guest_get_parked_info?mall_id=96&car_no=%E8%8B%8FE88F69&is_test=0&mallId=96&portalId=82"
         payload={}
