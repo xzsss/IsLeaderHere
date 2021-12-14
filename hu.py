@@ -5,7 +5,8 @@ import time
 def printHello(): 
     global isthere 
     nowhour =str(time.strftime("%H", time.localtime()))
-    if nowhour in ['8','9','10','17','18','19','20','21']:
+    if nowhour in ['08','09','10','17','18','19','20','21']:
+        print(time.localtime())
         url = "https://bmeparkapi.capitaland.com.cn/api/park/guest_get_parked_info?mall_id=96&car_no=%E8%8B%8FE88F69&is_test=0&mallId=96&portalId=82"
         payload={}
         headers = {}
@@ -24,15 +25,25 @@ def printHello():
             conn = http.client.HTTPSConnection("sctapi.ftqq.com")
             payload = ''
             headers = {}
-            conn.request("GET", "/SCT102166TKyxrHIebvjsU5ExLn5zljMjT.send?title="+message+"&desp="+message, payload, headers)
+            conn.request("GET", "/SCT102166TzGvZfWHTvJYEsuDyccVlxH5B.send?title="+message+"&desp="+message, payload, headers)
             res = conn.getresponse()
             data = res.read()
             print(data.decode("utf-8"))
+            print( time.localtime())
             isthere=newstatus
             if 'SUCCESS' not in data.decode("utf-8"):
                 print(data.decode("utf-8"))
-                exit()
-    timer = threading.Timer(600,printHello)
+                print( time.localtime())
+            conn.request("GET", "/SCT102623TQAVuxokNPcVWKAcHn4k0FW05.send?title="+message+"&desp="+message, payload, headers)
+            res = conn.getresponse()
+            data = res.read()
+            print(data.decode("utf-8"))
+            print( time.localtime())
+            isthere=newstatus
+            if 'SUCCESS' not in data.decode("utf-8"):
+                print(data.decode("utf-8"))
+                print( time.localtime())
+    timer = threading.Timer(300,printHello)
     timer.start()
 if __name__ == "__main__":  
     isthere =False
