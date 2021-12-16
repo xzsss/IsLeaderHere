@@ -87,7 +87,7 @@ def checkChenn():
             data = res.read()
             insertLog(datatext,'发送信息2成功',"chenn")
             isthereChenn=newstatus
-            insertSQL("chenn",isthereGhu)
+            insertSQL("chenn",isthereChenn)
             if 'SUCCESS' not in data.decode("utf-8"):
                 print(data.decode("utf-8"))
                 print( time.localtime())
@@ -113,5 +113,6 @@ if __name__ == "__main__":
     isthereChenn =False
     insertLog("--","程序开始",'xuz')
     timer = threading.Timer(1,checkGhu)
+    timer.start()  
     timer = threading.Timer(5,checkChenn)
     timer.start()           
